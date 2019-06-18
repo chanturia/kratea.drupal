@@ -1,0 +1,58 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function kratea_propertie_theme($existing, $type, $theme, $path) {
+  return [
+    'language_menu_block' => [
+      'variables' => ['languages' => NULL],
+    ],
+    'kratea_user_login_form' => [
+      'render element' => 'form',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * @param $form
+ * @param FormStateInterface $form_state
+ * @param $form_id
+ */
+function kratea_propertie_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['#theme'] = 'kratea_user_login_form';
+  $form['#attributes']['class'][] = 'modal-content animate';
+  $form['#submit'][] = '_kratea_propertie_user_login_form_submit';
+}
+
+/**
+ * Custom submit handler for login form.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function _kratea_propertie_user_login_form_submit($form, FormStateInterface $form_state) {
+  $form_state->setRedirect('system.admin_content');
+}
+
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function kratea_propertie_page_attachments_alter(array &$attachments) {
+  /*TODO: find the right way to unset library*/
+  $currentPath = \Drupal::service('path.current')->getPath();
+  if ($currentPath === '/user/login') {
+    $newLibraryArray = [];
+    foreach ($attachments["#attached"]["library"] as $library) {
+      if ($library !== 'kratea/global') {
+        $newLibraryArray[] = $library;
+      }
+      $attachments["#attached"]["library"] = $newLibraryArray;
+    }
+  }
+}

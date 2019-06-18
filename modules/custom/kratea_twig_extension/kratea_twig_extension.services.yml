@@ -1,0 +1,5 @@
+services:
+  kratea_twig_extension.twig:
+    class: Drupal\kratea_twig_extension\KrateaTwigExtension
+    tags:
+      - { name: twig.extension }

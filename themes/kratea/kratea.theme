@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * Implements hook_theme_suggestions_page_alter() to set 4xx template
+ * suggestions.
+ */
+function kratea_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  // get the route
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $route_parts = explode('.', $route_name);
+  
+  // is it system.4xx ?
+  if (count($route_parts) == 2 && $route_parts[0] === 'system') {
+    $code = $route_parts[1];
+    if (is_numeric($code) && $code >= 400 and $code < 500) {
+      // suggest template page--4xx.html.twig (e.g., page--404.html.twig)
+      $suggestions[] = 'page__' . $route_parts[1];
+    }
+  }
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    $content_type = $node->bundle();
+    $suggestions[] = 'page__node__' . $content_type;
+  }
+}
+
+function kratea_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['elements']['content']['#block_content'])) {
+    $suggestions[] = 'block__' . $variables['elements']['content']['#block_content']->bundle();
+    
+  }
+}
+
+function kratea_preprocess_page(&$variables) {
+  $taxonomyTermStorage = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_term');
+  $propertyType = $taxonomyTermStorage->loadTree('property_type');
+  foreach ($propertyType as $term) {
+    $variables['property_types'][] = [
+      'id' => $term->tid,
+      'name' => getTranslatedTerm($term->tid),
+    ];
+  }
+  $propertyPlace = $taxonomyTermStorage->loadTree('property_place');
+  foreach ($propertyPlace as $term) {
+    $variables['property_places'][] = [
+      'id' => $term->tid,
+      'name' => getTranslatedTerm($term->tid),
+    ];
+  }
+}
+
+function getTranslatedTerm($tid) {
+  $curr_langcode = \Drupal::languageManager()
+    ->getCurrentLanguage(\Drupal\Core\Language\LanguageInterface::TYPE_CONTENT)
+    ->getId();
+  
+  // retrieve term
+  $taxonomy_term = \Drupal\taxonomy\Entity\Term::load($tid);
+  
+  // retrieve the translated taxonomy term in specified language ($curr_langcode) with fallback to default language if translation not exists
+  $taxonomy_term_trans = \Drupal::service('entity.repository')
+    ->getTranslationFromContext($taxonomy_term, $curr_langcode);
+  
+  // get the value of the field "myfield"
+  return $taxonomy_term_trans->name->value;
+}

@@ -1,0 +1,5 @@
+name: Kratea twig extension
+type: module
+description: 'Twig extensions that helps kratea Theme'
+core: '8.x'
+package: Kratea

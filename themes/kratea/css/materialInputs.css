@@ -1,0 +1,111 @@
+form *,
+:before,
+:after {
+  box-sizing: border-box;
+}
+
+
+.group {
+  position: relative;
+  margin: 18px 0;
+}
+
+textarea {
+  resize: none;
+}
+
+.materialForm input,
+.materialForm textarea {
+  font-size: 15px;
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  padding: 5px 5px 5px 0px;
+  color: #232323;
+  border: none;
+  border-bottom: 1px solid #232323;
+  border-radius: 0;
+  background: none;
+}
+.materialForm input:focus,
+.materialForm textarea:focus {
+  outline: none;
+}
+.materialForm input:focus ~ label, input:valid ~ label,
+.materialForm textarea:focus ~ label,
+.materialForm textarea:valid ~ label {
+  font-size: 12px;
+  top: -14px;
+  color: #ffa300;
+}
+.materialForm input:focus ~ .bar:before,
+.materialForm textarea:focus ~ .bar:before {
+  width: 100%;
+}
+
+.materialForm input[type="password"] {
+  letter-spacing: 0.3em;
+}
+
+.materialForm label {
+  font-size: 16px;
+  font-weight: 500;
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  transition: 300ms ease all;
+  pointer-events: none;
+  color: #232323;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.bar:before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  content: '';
+  transition: 500ms ease all;
+  background: #ffa300;
+}
+
+.materialForm ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-weight: 500;
+  color: #232323;
+}
+.materialForm ::-moz-placeholder { /* Firefox 19+ */
+  font-weight: 500;
+  color: #232323;
+}
+.materialForm :-ms-input-placeholder { /* IE 10+ */
+  font-weight: 500;
+  color: #232323;
+}
+.materialForm :-moz-placeholder { /* Firefox 18- */
+  font-weight: 500;
+  color: #232323;
+  
+}
+.materialForm input:focus::-webkit-input-placeholder, .materialForm textarea:focus::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-weight: 500;
+   color: #21c0b5;
+
+}
+.materialForm input:focus::-moz-placeholder, .materialForm textarea:focus::-moz-placeholder { /* Firefox 19+ */
+  font-weight: 500;
+  color: #21c0b5;
+
+}
+.materialForm input:focus:-ms-input-placeholder, .materialForm textarea:focus:-ms-input-placeholder { /* IE 10+ */
+  color: #21c0b5;
+
+}
+.materialForm input:focus:-moz-placeholder, .materialForm textarea:focus:-moz-placeholder { /* Firefox 18- */
+  font-weight: 500;
+  color: #21c0b5;
+}

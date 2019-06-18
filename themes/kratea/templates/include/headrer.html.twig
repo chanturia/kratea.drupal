@@ -1,0 +1,18 @@
+<header class="between-xs row bottom-xs">
+    <!--Site logo-->
+    <div class="siteLogo">
+        <a href="{{ path('<front>') }}">
+            <img class="responsiveImg" src="/{{ active_theme_path() }}/img/krateaLogo.svg" alt="Site logo">
+        </a>
+    </div>
+    {{ kratea_render_block('language_menu', {}, false) }}
+    <div class="sidNavMenuButton hide-desktop" ng-click="openNav()">
+        <span>{{ 'MENU '|t }}</span>
+    </div>
+    <div class="menuContainer hide show-desktop">
+        <div class="menuWrapper">
+            {{ drupal_menu('sidnav-menu') }}
+            <a href="" ng-click="openFooter()">{{ 'contacts'|t }}</a>
+        </div>
+    </div>
+</header>

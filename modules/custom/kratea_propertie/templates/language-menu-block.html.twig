@@ -1,0 +1,24 @@
+<div class="languageContainer col-xs">
+    <div class="languageWrapper row">
+        <div class="mainLanguageWrapper">
+            <div class="mainLanguage row middle-xs center-xs">
+                {# <a href="{{ path_language('<current>', {}, {'language' : languages.current}) }}">#}
+                <div class="languageId activeLanguage">{{ languages.current=='zh-hans'?'zh':languages.current }}</div>
+                {#  </a>#}
+            </div>
+        </div>
+        <div class="overflowHidden">
+            <div id="moreLanguages" class="row">
+                {% for language in languages.more %}
+                    <div>
+                        <div class="languages row middle-md center-xs">
+                            <a href="{{ path_language('<current>', {}, {'language' : language}) }}">
+                                <div class="languageId">{{ language=='zh-hans'?'zh':language }}</div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

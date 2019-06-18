@@ -1,0 +1,67 @@
+<footer class="footer">
+    <div class="FooterClose hide-mobile" ng-click="closeFooter()">
+        <svg width="32" height="31" viewBox="0 0 32 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 0.5L31 30.5M1 30.5L31 0.5" stroke="#21C0B5"/>
+        </svg>
+    </div>
+    <div class="between-xs row">
+        <div class="col-lg-5 col-sm-6 col-xs-12 footerFormContainer">
+            <div class="start-xs">
+                <div>
+                    <div class="contactText">{{ page.contact_us_text }}</div>
+                </div>
+                <div style="margin-top: 11px;">
+                    <form class="materialForm row">
+                        <div class="col-sm col-xs-12" style="margin-right: 39px;">
+                            <div class="group">
+                                <input type="text" required="required" placeholder="{{ 'Name'|t }}"/>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                            </div>
+                            <div class="group">
+                                <input type="text" required="required" placeholder="{{ 'Last Name'|t }}"/>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                            </div>
+                            <div class="group">
+                                <input type="text" required="required" placeholder="{{ 'Email'|t }}"/>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm col-xs-12 row">
+                            <div class="col-xs group">
+                            <textarea type="textarea" style="height: 100%; resize: none;" required="required"
+                                      placeholder="{{ 'Message'|t }}"></textarea>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                            </div>
+                        </div>
+                        <div class="between-xs col-xs-12 middle-xs row">
+                            <div class="col-sm col-xs-12 footerPolicyText row">
+                                <span>{{ '* Retention Policy and the processing of personal data'|t }}</span>
+                            </div>
+                            <div class="center-xs col-sm-2 col-xs-12 end-sm row">
+                                <button class="formButton">{{ 'submit'|t }}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footerContactInfoWrapper">
+            <div style="" class="col-lg-12 end-xs row">
+                <div class="col-xs-12 callUsText">CALL US:</div>
+                <div class="col-xs-12 callUsPhone">(0030) 6984 89 0 708</div>
+            </div>
+            <div style="" class="col-lg-12 end-xs row">
+                <div class="col-xs-12"><span>WhatsApp</span></div>
+                <div class="col-xs-12"><span>Viber</span></div>
+            </div>
+            <div class="col-xs-12 end-xs footerContactInfoEmail row">
+                <div class="col-xs-12">EMAIL:</div>
+                <div class="col-xs-12">info@krateaproperties.com</div>
+            </div>
+        </div>
+    </div>
+</footer>

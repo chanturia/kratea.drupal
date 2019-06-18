@@ -1,0 +1,33 @@
+global:
+  css:
+    theme:
+      https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;subset=cyrillic,greek: { type: external }
+      https://use.fontawesome.com/releases/v5.6.3/css/all.css: { type: external }
+      css/normalize.css: {}
+      css/flexboxgrid.css: {}
+#      css/owl.theme.default.min.css: {}
+#      css/owl.carousel.min.css: {}
+      css/animate.css: {}
+      css/slick.css: {}
+      css/materialInputs.css: {}
+      css/main.css: {}
+  js:
+    js/vendor/modernizr-3.6.0.min.js: { minified: true }
+    js/vendor/jquery-3.3.1.min.js: { minified: true }
+    js/vendor/jquery.mousewheel.min.js: { minified: true }
+    https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js: { type: external, minified: true }
+    js/plugins.js: {}
+#    js/vendor/owl.carousel.min.js: { minified: true }
+    js/vendor/ng-FitText.js: { minified: true }
+    js/vendor/slick.min.js: { minified: true }
+    js/main.js: {}
+    js/directives.js: {}
+    https://maps.googleapis.com/maps/api/js?key=AIzaSyDwPsbrlRcHbWJ8UnHsiZaS8ciGnfdUVP8&callback=myMap: { type: external }
+    js/vendor/wow.min.js: { minified: true }
+
+comming_soon:
+  css:
+    theme:
+      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css: { type: external }
+      https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css: { type: external }
+      https://static.comingsoonpage.com/cspio-assets/1.0.0/style.css: { type: external }

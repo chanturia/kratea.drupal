@@ -1,0 +1,5 @@
+name: Kratea module
+type: module
+description: 'Kratea module'
+core: '8.x'
+package: Kratea
