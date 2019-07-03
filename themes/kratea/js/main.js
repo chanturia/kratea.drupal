@@ -21,11 +21,15 @@ ngApp.controller('mainController', ['$scope', '$window', '$timeout', function ($
   }
 
   angular.element(window).scroll(function () {
-    if (angular.element(window).scrollTop() + angular.element(window).height() === angular.element(document).height()) {
-      angular.element('.footer').addClass('opened');
-    }
-    else {
-      angular.element('.footer').removeClass('opened');
+    if ($window.innerWidth >= 769) {
+      if (angular.element(window).scrollTop() + angular.element(window).height() === angular.element(document).height()) {
+        angular.element('.contactBannerContainer ').css({transform: 'translateY(-50%)'});
+        angular.element('.footer').addClass('opened');
+      }
+      else {
+        angular.element('.contactBannerContainer ').css({transform: 'translateY(0%)'});
+        angular.element('.footer').removeClass('opened');
+      }
     }
   });
   if (angular.element('.infoPageWrapper').length > 0 || angular.element('.cardPageContainer').length > 0) {
@@ -42,10 +46,16 @@ ngApp.controller('mainController', ['$scope', '$window', '$timeout', function ($
   }
 
   $scope.openFooter = () => {
-    angular.element('.footer').addClass('opened');
+    if ($window.innerWidth >= 769) {
+      angular.element('.contactBannerContainer ').css({transform: 'translateY(-50%)'});
+      angular.element('.footer').addClass('opened');
+    }
   };
   $scope.closeFooter = () => {
-    angular.element('.footer').removeClass('opened');
+    if ($window.innerWidth >= 769) {
+      angular.element('.contactBannerContainer ').css({transform: 'translateY(0%)'});
+      angular.element('.footer').removeClass('opened');
+    }
   };
   $timeout(() => {
     angular.element('#overlay').fadeOut();
@@ -75,14 +85,13 @@ ngApp.controller('mainController', ['$scope', '$window', '$timeout', function ($
 ;
 
 ngApp.controller('cardsController', ['$scope', '$timeout', function ($scope, $timeout) {
-  $scope.cards = new Array(18);
   /*todo: refactor ASAP!!!*/
   requestAnimationFrame(function () {
     angular.element('.cardContainer').hover(function () {
-      angular.element(this).find('.cardInfoWrapper').css({paddingLeft: 0});
+      // angular.element(this).find('.cardInfoWrapper').css({paddingLeft: 0});
       angular.element(this).find('.propertyImages').css({boxShadow: "0px 10px 30px 0px black"});
     }, function () {
-      angular.element(this).find('.cardInfoWrapper').css({paddingLeft: 15});
+      // angular.element(this).find('.cardInfoWrapper').css({paddingLeft: 15});
       angular.element(this).find('.propertyImages').css({boxShadow: ""});
     });
   })

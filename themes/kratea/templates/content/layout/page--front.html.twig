@@ -54,87 +54,104 @@
 <!--Language and navigation-->
 {% include directory ~ '/templates/include/headrer.html.twig' %}
 <section>
-    <div class="mainContainer row">
-        <!--search content-->
-        <div class="row middle-md searchContainer" ng-init="searchData={};">
-            <div class="searchIndicatorText"><span>{{ 'buy'|t }}</span></div>
-            <div class="row searchWrapper">
-                <div class="selectType">
-                    <div class="" style=" width: 100%; height: 100%;">
-                        <div drop-down class="dropdown" tabindex="1">
-                            <div class="middle-xs row select">
-                                <span style="margin-left: 11px">{{ 'Property type'|t }}</span>
-                            </div>
-                            <input type="text" hidden name="property_type" ng-model="searchData.property_type">
-                            <ul class="dropdown-menu" style="display: none;">
-                                {% for property_type in property_types %}
-                                    <li id="{{ property_type.id }}">{{ property_type.name }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="middle-xs priceWrapper row">
-                    <div style="margin-left: 13px;height: 100%;" class="middle-xs row">
-                        <div>{{ 'Price'|t }}</div>
-                    </div>
-                    <div class="col-xs row" style=" height: 100%;">
-                        <div style=" position: relative;" class="col-xs rightInputDivider row">
-                            <div class="row" style="">
-                                <input placeholder="{{ 'from'|t }}" only-number ng-model="searchData.price_from" type="text" title="from" name="price_from">
-                            </div>
-                        </div>
-                        <div class="col-xs row">
-                            <div class="row"><input placeholder="{{ 'to'|t }}" only-number ng-model="searchData.price_to" type="text" name="price_to">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="selectPlace">
-                    <div class="" style="width: 100%; height: 100%;">
-                        <div drop-down class="dropdown" tabindex="1">
-                            <div class="start-xs center-md middle-xs row select">
-                                <span style="margin-left: 11px">{{ 'Region'|t }}</span>
-                            </div>
-                            <input type="text" hidden name="region"  ng-model="searchData.region">
-                            <ul class="dropdown-menu start-xs center-md" style="display: none;">
-                                {% for property_place in property_places %}
-                                    <li id="{{ property_place.id }}">{{ property_place.name }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="searchButtonWrapper">
-                <div class="searchButton center-xs middle-xs row">
-                    <div ng-click="propertySearch(searchData)">{{ 'SHOW'|t }}</div>
-                </div>
-            </div>
+    <div class="mainContainer">
+        <div class="frontMainSlogan">
+            <h3>Find a place of your dream...</h3>
         </div>
-        <div class="middle-md center-xs start-md row searchMoreActionContainer">
-            <div class="searchMoreActionWrapper between-xs bottom-xs row">
-                <div class="showNew">
-                    <div>{{ 'new'|t }}</div>
-                </div>
-                <div class="bottom-xs row">
-                    <div class="bottom-xs row">
-                        <div class="showOnMap">{{ 'Show on the map'|t }}</div>
-                        <div ng-click="openMap()" id="mapButton">
-                            <img class="responsiveImg" src="/{{ active_theme_path() }}/img/mapMarker.svg" alt="marker">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div style="width: 100%" ng-controller="cardsController">
+    </div>
+    <div>
+        <div style="width: 100%;margin: auto;" ng-controller="cardsController">
             {{ page.front_carousel_content }}
         </div>
     </div>
+</section>
+<section>
+    {# <div class="mainContainer row">
+        <!--search content-->
+               <div class="row middle-md searchContainer" ng-init="searchData={};">
+                    <div class="searchIndicatorText"><span>{{ 'buy'|t }}</span></div>
+                    <div class="row searchWrapper">
+                        <div class="selectType">
+                            <div class="" style=" width: 100%; height: 100%;">
+                                <div drop-down class="dropdown" tabindex="1">
+                                    <div class="middle-xs row select">
+                                        <span style="margin-left: 11px">{{ 'Property type'|t }}</span>
+                                    </div>
+                                    <input type="text" hidden name="property_type" ng-model="searchData.property_type">
+                                    <ul class="dropdown-menu" style="display: none;">
+                                        {% for property_type in property_types %}
+                                            <li id="{{ property_type.id }}">{{ property_type.name }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="middle-xs priceWrapper row">
+                            <div style="margin-left: 13px;height: 100%;" class="middle-xs row">
+                                <div>{{ 'Price'|t }}</div>
+                            </div>
+                            <div class="col-xs row" style=" height: 100%;">
+                                <div style=" position: relative;" class="col-xs rightInputDivider row">
+                                    <div class="row" style="">
+                                        <input placeholder="{{ 'from'|t }}" only-number ng-model="searchData.price_from" type="text" title="from" name="price_from">
+                                    </div>
+                                </div>
+                                <div class="col-xs row">
+                                    <div class="row"><input placeholder="{{ 'to'|t }}" only-number ng-model="searchData.price_to" type="text" name="price_to">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="selectPlace">
+                            <div class="" style="width: 100%; height: 100%;">
+                                <div drop-down class="dropdown" tabindex="1">
+                                    <div class="start-xs center-md middle-xs row select">
+                                        <span style="margin-left: 11px">{{ 'Region'|t }}</span>
+                                    </div>
+                                    <input type="text" hidden name="region"  ng-model="searchData.region">
+                                    <ul class="dropdown-menu start-xs center-md" style="display: none;">
+                                        {% for property_place in property_places %}
+                                            <li id="{{ property_place.id }}">{{ property_place.name }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="searchButtonWrapper">
+                        <div class="searchButton center-xs middle-xs row">
+                            <div ng-click="propertySearch(searchData)">{{ 'SHOW'|t }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="middle-md center-xs start-md row searchMoreActionContainer">
+                    <div class="searchMoreActionWrapper between-xs bottom-xs row">
+                        <div class="showNew">
+                            <div>{{ 'new'|t }}</div>
+                        </div>
+                        <div class="bottom-xs row">
+                            <div class="bottom-xs row">
+                                <div class="showOnMap">{{ 'Show on the map'|t }}</div>
+                                <div ng-click="openMap()" id="mapButton">
+                                    <img class="responsiveImg" src="/{{ active_theme_path() }}/img/mapMarker.svg" alt="marker">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+       <div style="width: 100%" ng-controller="cardsController">
+                    {{ page.front_carousel_content }}
+                </div>
+    </div>#}
     <div class="hide-mobile hide-tablet pageAPointer  animated fadeInRightBig">
         <img class="responsiveImg" src="/{{ active_theme_path() }}/img/A.svg" alt="Pointer">
     </div>
     {{ page.our_services }}
+    <div>
+        <div>
+            <div></div>
+        </div>
+    </div>
     {{ page.main_contact_banner }}
 </section>
 <!-- Footer start-->

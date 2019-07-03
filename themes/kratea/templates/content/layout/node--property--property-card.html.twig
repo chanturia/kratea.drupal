@@ -43,11 +43,11 @@
  * @see html.html.twig
  */
 #}
-<a href="{{ path('entity.node.canonical', {'node': node.id}) }}">
+<div>
     <div {#data-animate-class="fadeInRightBig" data-animate-delay="0.2"#} class="cardContainer">
         <div>
             <div class="propertyImages"
-                 style=" padding-top: 51.6%; background-image: url('{{ get_image_url_from_entity('field_property_image', node)[0].url }}');">
+                 style="padding-top: 51.6%; background-image: url('{{ get_image_url_from_entity('field_property_image', node)[0].url }}');">
             </div>
         </div>
         <div class="cardInfoWrapper">
@@ -55,27 +55,30 @@
                 <div data-animate-class="fadeInDown" data-animate-delay="0.2"
                      class="cardInfoTitle">{{ node.title.value }}</div>
             </div>
-            <div data-animate-class="fadeInDown" data-animate-delay="0.2" class="cardInfContent">
-                <div class="row col-xs-12">
+            <div class="cardInfContent">
+                <div class="row col-xs-12" data-animate-class="fadeInDown" data-animate-delay="0.3">
                     <div class="col-xs">{{ 'Object ID:'|t() }} {{ node.id }}</div>
                 </div>
                 {% if not node.field_property_price.isEmpty %}
-                    <div class="row col-xs-12">
+                    <div class="row col-xs-12" data-animate-class="fadeInDown" data-animate-delay="0.4">
                         <div class="col-xs">{{ 'Price:'|t }} {{ node.field_property_price.value|number_format() }}€
                         </div>
                     </div>
                 {% endif %}
                 {% if not node.field_property_type.isEmpty %}
-                    <div class="row col-xs-12">
+                    <div class="row col-xs-12" data-animate-class="fadeInDown" data-animate-delay="0.5">
                         <div class="col-xs">{{ 'Property type:'|t }} {{ node.field_property_type.entity.name.value }}</div>
                     </div>
                 {% endif %}
                 {% if not node.field_property_area.isEmpty %}
-                    <div class="row col-xs-12">
+                    <div class="row col-xs-12" data-animate-class="fadeInDown" data-animate-delay="0.6">
                         <div class="col-xs">{{ 'living space:'|t }} {{ node.field_property_area.value }} m²</div>
                     </div>
                 {% endif %}
+                <div class="discoverProperty" data-animate-class="fadeInDown" data-animate-delay="0.7">
+                    <a href="{{ path('entity.node.canonical', {'node': node.id}) }}"><span>{{ 'Discover'|t }}</span></a>
+                </div>
             </div>
         </div>
     </div>
-</a>
+</div>
